@@ -1,0 +1,37 @@
+{% extends 'sesion.html'%}
+
+{% block container %}
+<style>
+    body{color: #000;overflow-x: hidden;height: 100%;background-repeat: no-repeat;background-size: 100% 100%}.card{padding: 30px 40px;margin-top: 60px;margin-bottom: 60px;border: none !important;box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2)}.blue-text{color: #00BCD4}.form-control-label{margin-bottom: 0}input, textarea, button{padding: 8px 15px;border-radius: 5px !important;margin: 5px 0px;box-sizing: border-box;border: 1px solid #ccc;font-size: 18px !important;font-weight: 300}input:focus, textarea:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;border: 1px solid #00BCD4;outline-width: 0;font-weight: 400}.btn-block{text-transform: uppercase;font-size: 15px !important;font-weight: 400;height: 43px;cursor: pointer}.btn-block:hover{color: #fff !important}button:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;outline-width: 0}
+</style>
+
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-10 col-lg-8 col-md-9 col-11 text-center">
+            <div class="card  ">
+                <div class="container-fluid px-1 py-4 mx-auto">
+                    <table id="data" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Articulo</th>
+                                <th>Cantidad</th>
+                                <th>Ultima Modificacion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for array in consulta  %}
+                            <tr>
+                                {% for subArray in array %}
+                                <td>{{ subArray }}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

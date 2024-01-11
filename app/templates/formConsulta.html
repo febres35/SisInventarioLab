@@ -1,0 +1,53 @@
+{% extends "sesion.html"%}
+
+{% block container %}
+<style>
+    body{color: #000;overflow-x: hidden;height: 100%;background-repeat: no-repeat;background-size: 100% 100%}.card{padding: 30px 40px;margin-top: 60px;margin-bottom: 60px;border: none !important;box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2)}.blue-text{color: #00BCD4}.form-control-label{margin-bottom: 0}input, textarea, button{padding: 8px 15px;border-radius: 5px !important;margin: 5px 0px;box-sizing: border-box;border: 1px solid #ccc;font-size: 18px !important;font-weight: 300}input:focus, textarea:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;border: 1px solid #00BCD4;outline-width: 0;font-weight: 400}.btn-block{text-transform: uppercase;font-size: 15px !important;font-weight: 400;height: 43px;cursor: pointer}.btn-block:hover{color: #fff !important}button:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;outline-width: 0}
+</style>
+<div class="container-fluid px-1 py-1 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-12 col-lg-8 col-md-9 col-11 text-center">
+            <br>
+            <div class="card">
+                <h5 class="text-center mb-4">Consulta</h5>
+                {% block form %}
+                <form method="POST" class="form-card" action="{{url_for('page.consumoDetallado')}}" name="consulta">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"\>
+
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-3 flex-column  d-flex"> <label class="form-control-label px-3 required">Fecha inicial<span class="text-danger"> *</span></label> <input type="date"  class="required" name="inicio" placeholder="Indique la fecha" required> </div>
+                        <div class="form-group col-sm-3 flex-column  d-flex"> <label class="form-control-label px-3 required">Fecha final<span class="text-danger"> *</span></label> <input type="date"  name="fin" placeholder="Indique la fecha" class="required" required> </div>
+                        <div class="form-group col-sm-3 flex-column  row-sm-3 d-flex"> <label class="form-control-label px-3 required">Articulo</label>
+                            <select  class="form-control required" name="articulo" id="consultadetalladaconsumoarticulo">
+                                <option name="articulo"  selected value="filtro">Filtro</option>
+                                <option name="articulo" value="ws2">Ethanol</option>
+                                <option name="articulo" value="colectores">Colectores</option>
+                                <option name="articulo" value="ependrorf05">Ependrorf 0.5mL</option>
+                                <option name="articulo" value="ependrorf02">Ependrorf 0.2mL</option>
+                                    <option name="articulo" value="ependrorf2">Ependrorf 2.0</option>
+                                <option name="articulo" value="puntas10">Puntas 10</option>
+                                <option name="articulo" value="puntas1000">Puntas 1000</option>
+                                <option name="articulo" value="amplificacion">Reactivos 96</option>
+                                <option name="articulo" value="ws1">WS1</option>
+                                <option name="articulo" value="ssb">SSB</option>
+                                <option name="articulo" value="eb">EB</option>
+                                <option name="articulo" value="hisopos">Hisopos</option>
+                                <option name="articulo" value="amplificacion24">Reactivos 24</option>
+                            </select>
+                            <!--<input type="text" maxlength="15" class="required" name="articulo" placeholder="Indique la fecha" required>-->
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                    <div class="form-group col-12 flex-column d-flex"> <button type="submit" class="btn-block btn-primary" name="consulta_consumo">Consultar</button> </div>
+                    </div>
+
+                </form>
+                {% endblock%}
+
+                {% block consultaDetallada %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

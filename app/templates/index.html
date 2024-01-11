@@ -1,0 +1,111 @@
+{% extends 'layout.html'%}
+{% from 'helpers/_forms.html' import render_field %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+
+    <div class="container">
+
+        <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
+          <a class="navbar-brand" href="https://pasedesalud.casalab.com.ve">
+          <img width="100px" src="https://pasedesalud.casalab.com.ve/images/logo_casalab_grande.png" alt="PaseDeSalud">
+          </a>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Activar navegación">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav mr-auto"></ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ml-auto ">
+                <!-- Authentication Links -->
+                <form action="{{url_for('page.login')}}" method="POST" name="login">
+                    <input  type="hidden" name="csrf_token" value="{{ csrf_token() }}"\>
+
+                    <label for="Usuario">
+                    <input type="text" placeholder="usuario" class="form-control required " name="username" required>
+                	</label>
+                    <label for="Clave">
+                    <input type="password" placeholder="Clave" class="form-control col-md-10 required" name="pws" required>
+                    </label>
+                    <label for="boton">
+                    <button class="btn btn-primary" type="submit" name="Blogin" >Iniciar Sesión</button>
+                    </label>
+                </form>
+            </ul>
+			</div>
+		</div>
+	</nav>
+{% endblock %}
+
+{% block container %}
+<style>
+    body{color: #000;overflow-x: hidden;height: 100%;background-repeat: no-repeat;background-size: 100% 100%}.card{padding: 30px 40px;margin-top: 60px;margin-bottom: 60px;border: none !important;box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2)}.blue-text{color: #00BCD4}.form-control-label{margin-bottom: 0}input, textarea, button{padding: 8px 15px;border-radius: 5px !important;margin: 5px 0px;box-sizing: border-box;border: 1px solid #ccc;font-size: 18px !important;font-weight: 300}input:focus, textarea:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;border: 1px solid #00BCD4;outline-width: 0;font-weight: 400}.btn-block{text-transform: uppercase;font-size: 15px !important;font-weight: 400;height: 43px;cursor: pointer}.btn-block:hover{color: #fff !important}button:focus{-moz-box-shadow: none !important;-webkit-box-shadow: none !important;box-shadow: none !important;outline-width: 0}
+</style>
+
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <h3>Insumos</h3>
+            <p class="blue-text">Declare el material utilizado en el laborio<br></p>
+            <div class="card ">
+
+                <form method="POST" class="form-card" action="{{url_for('page.Consumos')}}" name="consumo">
+
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"\>
+
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">Fecha<span class="text-danger"> *</span></label> <input type="date"  name="fecha"  placeholder="Indique la fecha" class="required" required> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">Turno<span class="text-danger"> *</span></label> <input type="text"  name="turno" placeholder="Indique el turno" class="required" required> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-1">Apellido y Nombre<span class="text-danger"> *</span></label> <input type="text"  name="nombre" maxlength="25" placeholder="Indique su nombre" class="required" required> </div>
+
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">Filtro<span class="text-danger"> </span></label> <input type="number" name="filtro" min="0" placeholder="Numero de piezas" > </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">Micro Colectores<span class="text-danger"> </span></label> <input type="number"  min="0" name="colectores" placeholder="Numero de piezas"> </div>
+
+                    </div>
+                    <div class="row justify-content-between text-left">
+
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">Ependorf 0.5<span class="text-danger"> </span></label> <input type="number" name="ependrorf05" min="0" placeholder="Numero de piezas"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">Ependorf 0.2<span class="text-danger"> </span></label> <input type="number"  name="ependrorf02" min="0" placeholder="Numero de piezas"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">Ependorf 2<span class="text-danger"> </span></label> <input type="number" name="ependrorf2" min="0" placeholder="Numero de piezas"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">Puntas 10<span class="text-danger"> </span></label> <input type="number" name="puntas10" min="0" placeholder="Numero de piezas"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">Puntas 1000<span class="text-danger"> </span></label> <input type="number"  name="puntas1000" min="0" placeholder="Numero de piezas"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Kit Amplificacion 96 <span class="text-danger"> </span></label> <input type="number"  step="0.1" min="0" name="amplificacion" placeholder="Numero de piezas"> </div>
+
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">WS1 mL<span class="text-danger"> </span></label> <input type="number" step="0.1" name="ws1" min="0" placeholder="Numero de mL"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">WS2 mL<span class="text-danger"> </span></label> <input type="number" step="0.1" name="ws2"  min="0"placeholder="Numero de mL"> </div>
+
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">SSB mL<span class="text-danger"> </span></label> <input type="number" step="0.1" name="ssb"  min="0" placeholder="Numero de mL"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">EB mL<span class="text-danger"> </span></label> <input type="number" step="0.1" name="eb"  min="0" placeholder="Numero de mL"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-1">Hisopo<span class="text-danger"></span></label> <input type="number"  name="hisopos" min="0" placeholder="Numero de piezas"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Kit Amplificacion 24 <span class="text-danger"> </span></label> <input type="number"  step="0.1" min="0" name="amplificacion24" placeholder="Numero de piezas"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-1">Observaciones<span class="text-danger"> </span></label> <input type="text" name="observacion" placeholder="Observaciones"> </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary" name="Bconsumo">Consumo de Insumos</button> </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

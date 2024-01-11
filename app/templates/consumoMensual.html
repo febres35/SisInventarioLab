@@ -1,0 +1,20 @@
+{% extends "formConsulta.html" %}
+
+{% block form %}
+
+<form method="POST" class="form-card" action="{{url_for('page.consumoMensual')}}" name="consulta">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"\>
+    <div class="form-control col-4 flex-column d-flex">
+    <select class="form-control col-4 flex-column d-flex required" name="mes" id="consultaConsumoMensual">
+        {% for i in mes %}
+        <option name="mes" value="{{i}}">{{i}}</option>
+        {% endfor %}
+    </select>
+
+    <label class="form-control-label px-3">Año<span class="text-danger"> *</span></label> <input type="number"  name="ano" min="2020" placeholder="Indique el ano" value="2022">
+    <div class="row justify-content-end">
+    <div class="form-group col-12 flex-column d-flex"> <button type="submit" class="btn-block btn-primary" name="consulta_consumo">Consultar</button> </div>
+        </div>
+</form>
+{% endblock %}
+
