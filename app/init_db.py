@@ -31,9 +31,9 @@ def init_DB():
             for article in articles:
                 models.Article.create_elemet(name=article[0], description="", unit_id=article[1])
 
-    #else: # encaso de un nuevo ingreso.
+   #else: # encaso de un nuevo ingreso.
         #unit1 = models.Unit.query.filter_by(id=2).first()
-        #articles=[['amplificacion24', unit1]]
+       #articles=[['amplificacion24', unit1]]
         #for article in articles:
             #models.Article.create_elemet(name=article[0], description="", unit_id=article[1])
 
