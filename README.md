@@ -5,10 +5,13 @@ cargar el invetario, generar un reporte en un rango de fecha, mensual o anual so
 
 # Requisitos
 - Mysql
-- Python 3
+- Python 3.8
 - virtualenv
 - pip
 
+# Instalacion
 
+- libs
+    pip install -r requirements.txt
 
 
